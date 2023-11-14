@@ -30,7 +30,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("kbot %s started", appVersion)
+		fmt.Printf("kbot %s started", appVersion)
 		kbot, err := telebot.NewBot(telebot.Settings{
 			URL:    "",
 			Token:  TeleToken,
@@ -38,7 +38,7 @@ to quickly create a Cobra application.`,
 		})
 
 		if err != nil {
-			log.Fatal("Plaese cheek Tele_Token env variable.%s", err)
+			log.Fatalf("Plaese cheek Tele_Token env variable. %s", err)
 			return
 		}
 		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
